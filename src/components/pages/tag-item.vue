@@ -1,12 +1,12 @@
 <template>
-  <div class="archives">
+  <div class="tag-item">
     <Timeline>
         <TimelineItem color="green">
             <Icon type="md-bookmark" size="18" slot="dot"></Icon>
-            <p>继续努力！</p>
-            <p class="content">目前共计 {{archives.num}} 篇日志</p>
+            <p>标签:</p>
+            <p class="content">{{tagItem.title}}</p>
         </TimelineItem>
-        <TimelineItem v-for="li in archives.list" :key="li.id" color="#515a6e">
+        <TimelineItem v-for="li in tagItem.list" :key="li.id" color="#515a6e">
           <router-link :to="'/archives/'+li.link">
             <p>{{li.time}}</p>
             <p class="content">{{li.title}}</p>
@@ -20,8 +20,8 @@
 export default {
   data () {
     return {
-      archives: {
-        num: 123,
+      tagItem: {
+        title: 'vue',
         list: [
           {
             id: 1,
@@ -37,12 +37,20 @@ export default {
         ]
       }
     }
+  },
+  methods: {
+    init () {
+      document.title = '标签:' + this.tagItem.title + ' | You'
+    }
+  },
+  mounted () {
+    this.init()
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.archives{
+.tag-item{
   .content{
     font-size: 16px;
   }

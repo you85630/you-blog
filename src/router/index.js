@@ -3,6 +3,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 const router = new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -13,7 +14,7 @@ const router = new Router({
       component: () => import('views/home'),
       meta: {
         requireAuth: true,
-        title: '首页 | You'
+        title: "You's Blog"
       }
     }, {
       path: '/archives',
@@ -24,9 +25,9 @@ const router = new Router({
         title: '归档 | You'
       }
     }, {
-      path: '/tag',
-      name: 'tag',
-      component: () => import('views/tag'),
+      path: '/tags',
+      name: 'tags',
+      component: () => import('views/tags'),
       meta: {
         requireAuth: true,
         title: '标签 | You'
@@ -38,6 +39,20 @@ const router = new Router({
       meta: {
         requireAuth: true,
         title: '关于 | You'
+      }
+    }, {
+      path: '/tags/:id',
+      name: 'tagitem',
+      component: () => import('components/pages/tag-item'),
+      meta: {
+        requireAuth: true
+      }
+    }, {
+      path: '/archives/:id',
+      name: 'details',
+      component: () => import('components/pages/details'),
+      meta: {
+        requireAuth: true
       }
     }
   ]

@@ -9,6 +9,7 @@
               <MenuItem class="center" :name="li.id" v-for="li in menuList" :key="li.id">
                 <Icon size="18" :type="li.icon" />{{li.title}}
               </MenuItem>
+              <div class="search" @click="visible=true"><Icon size="18" type="md-search" />搜索</div>
             </div>
           </div>
         </Menu>
@@ -22,6 +23,12 @@
         <Footer class="footer">2018<span v-if="time!==2018">&nbsp;-&nbsp;{{time===2018?'':time}}</span>&nbsp;&copy;&nbsp;You</Footer>
       </Content>
     </Layout>
+    <Modal footer-hide v-model="visible" title="搜索" width="55%">
+        <Input prefix="ios-search" placeholder="Enter name" style="width: 100%" />
+        <div class="search-list">
+          111
+        </div>
+    </Modal>
   </div>
 </template>
 
@@ -29,6 +36,7 @@
 export default {
   data () {
     return {
+      visible: false,
       activeName: 1,
       menuList: [
         {
@@ -45,7 +53,7 @@ export default {
           id: 3,
           icon: 'md-bookmark',
           title: '标签',
-          link: '/tag'
+          link: '/tags'
         }, {
           id: 4,
           icon: 'md-contact',
@@ -86,15 +94,13 @@ export default {
   background-color: #f5f7f9;
   font-size: 0;
 }
-.ivu-menu-dark{
-  height: 64px;
-  line-height: 64px;
-}
 .menu-box{
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
+  margin: 0 auto;
+  width: 1200px;
   .logo-box{
     a{
       display: flex;
@@ -112,18 +118,35 @@ export default {
       cursor: pointer;
     }
   }
+  .nav-box{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+  .search{
+    margin-left: 20px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    i{
+      margin-right: 6px;
+    }
+  }
 }
 .footer{
   text-align: center;
 }
 .centent{
+  box-sizing: border-box;
+  margin: 0 auto;
   padding: 0 50px;
+  width: 1300px;
   .slide-fade-enter-active {
     transition: all .3s ease;
   }
 
   .slide-fade-leave-active {
-    transition: all .5s ease-in-out;
+    transition: all .3s ease-in-out;
   }
 
   .slide-fade-enter,
@@ -137,6 +160,13 @@ export default {
     padding: 20px;
     min-height: 79vh;
   }
+}
+.search-list{
+  margin-top: 10px;
+}
+.ivu-menu-dark{
+  height: 64px;
+  line-height: 64px;
 }
 .ivu-menu-item-active,
 .ivu-menu-item-selected {
