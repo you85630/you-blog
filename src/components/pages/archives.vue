@@ -1,18 +1,21 @@
 <template>
   <div class="archives">
-    <Timeline>
-        <TimelineItem color="#fc0">
+    <Card shadow class="time-line">
+      <Timeline>
+          <TimelineItem color="#fc0">
             <Icon type="ios-trophy" size="18" slot="dot"></Icon>
             <p>继续努力！</p>
             <p class="content">目前共计 {{archives.num}} 篇日志</p>
-        </TimelineItem>
-        <TimelineItem v-for="li in archives.list" :key="li.id" color="#515a6e">
-          <router-link :to="'/archives/'+li.link">
-            <p>{{li.time}}</p>
-            <p class="content">{{li.title}}</p>
-          </router-link>
-        </TimelineItem>
-    </Timeline>
+          </TimelineItem>
+          <TimelineItem v-for="li in archives.list" :key="li.id" color="#515a6e">
+            <router-link :to="'/archives/'+li.link">
+              <p>{{li.time}}</p>
+              <p class="content">{{li.title}}</p>
+            </router-link>
+          </TimelineItem>
+      </Timeline>
+    </Card>
+    <Page :total="100" show-elevator />
   </div>
 </template>
 
@@ -43,8 +46,14 @@ export default {
 
 <style lang="scss" scoped>
 .archives{
+  text-align: center;
+  font-size: 14px;
   .content{
     font-size: 16px;
+  }
+  .time-line{
+    margin-bottom: 20px;
+    text-align: left;
   }
   a{
     border-bottom: 1px dashed #999;

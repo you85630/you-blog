@@ -1,5 +1,9 @@
 <template>
-  <div class="about-box">about</div>
+  <div class="about-box">
+    <Card shadow>
+      about
+    </Card>
+  </div>
 </template>
 
 <script>

@@ -4,9 +4,9 @@
       <h2>标签</h2>
       <p>目前共计<span>168</span>个标签</p>
     </div>
-    <div class="tag-list">
+    <Card shadow class="tag-list">
       <router-link v-for="li in tagList" :key="li.id" :to="'/tags/'+li.link" :style="{fontSize:fontSize(li.num)+'px'}">{{li.name}}</router-link>
-    </div>
+    </Card>
   </div>
 </template>
 

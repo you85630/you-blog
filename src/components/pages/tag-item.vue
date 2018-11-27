@@ -1,7 +1,8 @@
 <template>
   <div class="tag-item">
-    <Timeline>
-        <TimelineItem color="green">
+    <Card shadow class="time-line">
+      <Timeline>
+          <TimelineItem color="#2d8cf0">
             <Icon type="md-bookmark" size="18" slot="dot"></Icon>
             <p>标签:</p>
             <p class="content">{{tagItem.title}}</p>
@@ -12,7 +13,9 @@
             <p class="content">{{li.title}}</p>
           </router-link>
         </TimelineItem>
-    </Timeline>
+      </Timeline>
+    </Card>
+    <Page :total="100" show-elevator />
   </div>
 </template>
 
@@ -51,6 +54,12 @@ export default {
 
 <style lang="scss" scoped>
 .tag-item{
+  text-align: center;
+  font-size: 14px;
+  .time-line{
+    margin-bottom: 20px;
+    text-align: left;
+  }
   .content{
     font-size: 16px;
   }

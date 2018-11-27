@@ -3,7 +3,7 @@
     <Layout>
       <Header>
         <Menu mode="horizontal" theme="dark" :active-name="activeName" @on-select="activeItem">
-          <div class="menu-box">
+          <div class="menu-box width-min">
             <div class="logo-box"><router-link to="/home">You's Blog</router-link></div>
             <div class="nav-box">
               <MenuItem class="center" :name="li.id" v-for="li in menuList" :key="li.id">
@@ -14,14 +14,14 @@
           </div>
         </Menu>
       </Header>
-      <Content class="centent">
-        <Card shadow class="card-box">
+      <Content class="centent width-min">
+        <div class="card-box">
           <transition name="slide-fade" mode="out-in">
             <router-view />
           </transition>
-        </Card>
-        <Footer class="footer">2018<span v-if="time!==2018">&nbsp;-&nbsp;{{time===2018?'':time}}</span>&nbsp;&copy;&nbsp;You</Footer>
+        </div>
       </Content>
+      <Footer class="footer">2018<span v-if="time!==2018">&nbsp;-&nbsp;{{time===2018?'':time}}</span>&nbsp;&copy;&nbsp;You</Footer>
     </Layout>
     <Modal footer-hide v-model="visible" title="搜索" width="55%">
         <Input prefix="ios-search" placeholder="Enter name" style="width: 100%" />
@@ -86,13 +86,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.width-min{
+  margin: 0 auto;
+  min-width: 600px;
+  width: 60%;
+}
 .menu-box{
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0 auto;
-  width: 1200px;
   .logo-box{
     a{
       display: flex;
@@ -126,13 +129,11 @@ export default {
   }
 }
 .footer{
+  margin-top: 20px;
+  background-color: #fff;
   text-align: center;
 }
 .centent{
-  box-sizing: border-box;
-  margin: 0 auto;
-  padding: 0 50px;
-  width: 1300px;
   .slide-fade-enter-active {
     transition: all .3s ease;
   }
@@ -148,8 +149,7 @@ export default {
   }
   .card-box{
     box-sizing: border-box;
-    margin-top: 24px;
-    padding: 20px;
+    margin-top: 20px;
     min-height: 78vh;
   }
 }

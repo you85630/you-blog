@@ -1,5 +1,9 @@
 <template>
-  <div class="details">111</div>
+  <div class="details">
+    <Card shadow>
+      111
+    </Card>
+  </div>
 </template>
 
 <script>
