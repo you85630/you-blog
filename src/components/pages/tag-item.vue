@@ -15,8 +15,8 @@
         </TimelineItem>
       </Timeline>
     </Card>
-    <div class="page-box">
-      <Page :total="100" />
+    <div class="page-box" v-if="tagItemNum>10">
+      <Page :total="tagItemNum" />
     </div>
   </div>
 </template>
@@ -31,7 +31,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'tagItem'
+      'tagItem',
+      'tagItemNum'
     ])
   },
   methods: {

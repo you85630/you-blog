@@ -11,7 +11,7 @@
       <div class="info">{{li.info}}</div>
       <router-link :to="'/archives/'+li.link">阅读全文<Icon size="16" type="md-arrow-dropright" /></router-link>
     </Card>
-    <div class="page-box">
+    <div class="page-box" v-if="homeTotal>10">
       <Page :total="homeTotal" />
     </div>
   </div>

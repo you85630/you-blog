@@ -15,7 +15,7 @@
           </TimelineItem>
       </Timeline>
     </Card>
-    <div class="page-box">
+    <div class="page-box" v-if="archivesTotal>10">
       <Page :total="archivesTotal" />
     </div>
   </div>
