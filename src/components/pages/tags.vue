@@ -2,34 +2,28 @@
   <div class="tag-box">
     <div class="headline">
       <h2>标签</h2>
-      <p>目前共计<span>168</span>个标签</p>
+      <p>目前共计<span>{{tagNum}}</span>个标签</p>
     </div>
-    <Card shadow class="tag-list">
+    <Card shadow class="tag-list" v-if="tagList.length">
       <router-link v-for="li in tagList" :key="li.id" :to="'/tags/'+li.link" :style="{fontSize:fontSize(li.num)+'px'}">{{li.name}}</router-link>
     </Card>
+    <div class="data-none" v-else>请加油哟~~</div>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
-  data () {
-    return {
-      tagList: [
-        {
-          id: 1,
-          name: 'name1',
-          num: 1,
-          link: 'vue'
-        }, {
-          id: 2,
-          name: 'name2',
-          num: 10,
-          link: 'react'
-        }
-      ]
-    }
+  computed: {
+    ...mapGetters([
+      'tagList',
+      'tagNum'
+    ])
   },
   methods: {
+    ...mapActions([
+      'getTagList'
+    ]),
     fontSize (key) {
       let size = 12
       size += key
@@ -38,6 +32,9 @@ export default {
       }
       return size
     }
+  },
+  created () {
+    this.getTagList()
   }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="tag-item">
-    <Card shadow class="time-line">
+    <Card shadow>
       <Timeline>
           <TimelineItem color="#2d8cf0">
             <Icon type="md-bookmark" size="18" slot="dot"></Icon>
@@ -15,31 +15,19 @@
         </TimelineItem>
       </Timeline>
     </Card>
-    <Page :total="100" show-elevator />
+    <div class="page-box">
+      <Page :total="100" />
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-  data () {
-    return {
-      tagItem: {
-        title: 'vue',
-        list: [
-          {
-            id: 1,
-            time: '2018-11-27',
-            title: '学习vuex',
-            link: 'learn-vue'
-          }, {
-            id: 2,
-            time: '2018-11-28',
-            title: '学习vuex学习vuex学习vuex学习vuex学习vuex学习vuex学习vuex',
-            link: 'learn-vue'
-          }
-        ]
-      }
-    }
+  computed: {
+    ...mapGetters([
+      'tagItem'
+    ])
   },
   methods: {
     init () {
@@ -54,14 +42,13 @@ export default {
 
 <style lang="scss" scoped>
 .tag-item{
-  text-align: center;
-  font-size: 14px;
-  .time-line{
-    margin-bottom: 20px;
-    text-align: left;
-  }
   .content{
     font-size: 16px;
+  }
+  .page-box{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
   }
   a{
     border-bottom: 1px dashed #999;

@@ -1,13 +1,13 @@
 <template>
   <div class="archives">
-    <Card shadow class="time-line">
+    <Card shadow>
       <Timeline>
           <TimelineItem color="#fc0">
             <Icon type="ios-trophy" size="18" slot="dot"></Icon>
-            <p>继续努力！</p>
-            <p class="content">目前共计 {{archives.num}} 篇日志</p>
+            <p>请继续努力！</p>
+            <p class="content">目前共计 {{archivesTotal}} 篇日志</p>
           </TimelineItem>
-          <TimelineItem v-for="li in archives.list" :key="li.id" color="#515a6e">
+          <TimelineItem v-for="li in archivesList" :key="li.id" color="#515a6e">
             <router-link :to="'/archives/'+li.link">
               <p>{{li.time}}</p>
               <p class="content">{{li.title}}</p>
@@ -15,45 +15,41 @@
           </TimelineItem>
       </Timeline>
     </Card>
-    <Page :total="100" show-elevator />
+    <div class="page-box">
+      <Page :total="archivesTotal" />
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
-  data () {
-    return {
-      archives: {
-        num: 123,
-        list: [
-          {
-            id: 1,
-            time: '2018-11-27',
-            title: '学习vuex',
-            link: 'learn-vue1'
-          }, {
-            id: 2,
-            time: '2018-11-28',
-            title: '学习vuex学习vuex学习vuex学习vuex学习vuex学习vuex学习vuex',
-            link: 'learn-vue2'
-          }
-        ]
-      }
-    }
+  computed: {
+    ...mapGetters([
+      'archivesList',
+      'archivesTotal'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'getArchivesList'
+    ])
+  },
+  created () {
+    this.getArchivesList()
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .archives{
-  text-align: center;
-  font-size: 14px;
   .content{
     font-size: 16px;
   }
-  .time-line{
-    margin-bottom: 20px;
-    text-align: left;
+  .page-box{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
   }
   a{
     border-bottom: 1px dashed #999;

@@ -18,5 +18,6 @@ export default {
   border-radius: 4px;
   background-color: #f5f7f9;
   font-size: 0;
+  overflow: hidden;
 }
 </style>
