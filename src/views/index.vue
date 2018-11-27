@@ -64,8 +64,6 @@ export default {
     ]),
     // 页面布局响应
     init () {
-      console.log(document.body.clientWidth)
-
       if (document.body.clientWidth <= 644) {
         this.modeType = 'vertical'
         this.showMenu = false
