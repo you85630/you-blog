@@ -20,6 +20,11 @@ export default {
           name: 'name1',
           num: 1,
           link: 'vue'
+        }, {
+          id: 2,
+          name: 'name2',
+          num: 10,
+          link: 'react'
         }
       ]
     }

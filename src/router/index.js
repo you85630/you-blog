@@ -9,51 +9,64 @@ const router = new Router({
       path: '/',
       redirect: '/home'
     }, {
+      path: '*',
+      name: '404',
+      component: () => import('views/notfound'),
+      meta: {
+        title: '页面飞走了'
+      }
+    }, {
       path: '/home',
-      name: 'home',
-      component: () => import('views/home'),
-      meta: {
-        requireAuth: true,
-        title: "You's Blog"
-      }
-    }, {
-      path: '/archives',
-      name: 'archives',
-      component: () => import('views/archives'),
-      meta: {
-        requireAuth: true,
-        title: '归档 | You'
-      }
-    }, {
-      path: '/tags',
-      name: 'tags',
-      component: () => import('views/tags'),
-      meta: {
-        requireAuth: true,
-        title: '标签 | You'
-      }
-    }, {
-      path: '/about',
-      name: 'about',
-      component: () => import('views/about'),
-      meta: {
-        requireAuth: true,
-        title: '关于 | You'
-      }
-    }, {
-      path: '/tags/:id',
-      name: 'tagitem',
-      component: () => import('components/pages/tag-item'),
-      meta: {
-        requireAuth: true
-      }
-    }, {
-      path: '/archives/:id',
-      name: 'details',
-      component: () => import('components/pages/details'),
-      meta: {
-        requireAuth: true
-      }
+      component: () => import('views/index'),
+      children: [
+        {
+          path: '/',
+          name: 'home',
+          component: () => import('components/pages/home'),
+          meta: {
+            requireAuth: true,
+            title: "You's Blog"
+          }
+        }, {
+          path: '/archives',
+          name: 'archives',
+          component: () => import('components/pages/archives'),
+          meta: {
+            requireAuth: true,
+            title: '归档 | You'
+          }
+        }, {
+          path: '/tags',
+          name: 'tags',
+          component: () => import('components/pages/tags'),
+          meta: {
+            requireAuth: true,
+            title: '标签 | You'
+          }
+        }, {
+          path: '/about',
+          name: 'about',
+          component: () => import('components/pages/about'),
+          meta: {
+            requireAuth: true,
+            title: '关于 | You'
+          }
+        }, {
+          path: '/tags/:id',
+          name: 'tagitem',
+          component: () => import('components/pages/tag-item'),
+          meta: {
+            requireAuth: true
+          }
+        }, {
+          path: '/archives/:id',
+          name: 'details',
+          component: () => import('components/pages/details'),
+          meta: {
+            requireAuth: true
+          }
+        }
+      ]
     }
   ]
 })
