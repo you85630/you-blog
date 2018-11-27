@@ -1,23 +1,28 @@
 <template>
-  <div class="details">
     <Card shadow>
-      111
+      <div class="details" v-html="details"></div>
     </Card>
-  </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
-  data () {
-    return {
-      details: {
-        title: 'learn-vue'
-      }
-    }
+  computed: {
+    ...mapGetters([
+      'details'
+    ])
   },
   methods: {
+    ...mapActions([
+      'getDetails'
+    ]),
     init () {
-      document.title = this.details.title + ' | You'
+      // 获取页面数据
+      let id = this.$route.params.id
+      this.getDetails(id)
+      // 页面标题
+      document.title = id + ' | You'
     }
   },
   created () {
