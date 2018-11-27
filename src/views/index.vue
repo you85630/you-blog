@@ -64,7 +64,9 @@ export default {
     ]),
     // 页面布局响应
     init () {
-      if (document.body.clientWidth <= 634) {
+      console.log(document.body.clientWidth)
+
+      if (document.body.clientWidth <= 644) {
         this.modeType = 'vertical'
         this.showMenu = false
       } else {
@@ -230,13 +232,19 @@ export default {
   .width-min{
     min-width: 90%;
   }
+  .ivu-layout-header{
+    padding: 0 20px;
+  }
 }
 @media (max-width: 720px) {
   .width-min{
     min-width: 95%;
   }
+  .ivu-layout-header{
+    padding: 0 20px;
+  }
 }
-@media (max-width: 640px) {
+@media (max-width: 650px) {
   .width-min{
     min-width: 100%;
   }

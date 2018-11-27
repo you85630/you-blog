@@ -59,7 +59,7 @@ export default {
       flex-direction: row;
       margin-bottom: 10px;
       .num-mar{
-        margin: 0 20px;
+        margin: 0 12px;
       }
     }
     .info{

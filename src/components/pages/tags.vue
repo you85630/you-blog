@@ -66,7 +66,6 @@ export default {
     .tag{
       margin:10px 14px;
       margin-top: 0;
-      border-bottom: 1px solid #999;
       color: #999;
       font-size: 12px;
       cursor: pointer;
