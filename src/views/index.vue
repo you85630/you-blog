@@ -45,34 +45,12 @@ export default {
       modeType: 'horizontal',
       showMenu: true,
       visible: false,
-      activeName: 1,
-      menuList: [
-        {
-          id: 1,
-          icon: 'md-home',
-          title: '首页',
-          link: '/home'
-        }, {
-          id: 2,
-          icon: 'md-cube',
-          title: '归档',
-          link: '/archives'
-        }, {
-          id: 3,
-          icon: 'md-bookmark',
-          title: '标签',
-          link: '/tags'
-        }, {
-          id: 4,
-          icon: 'md-contact',
-          title: '关于',
-          link: '/about'
-        }
-      ]
+      activeName: 1
     }
   },
   computed: {
     ...mapGetters([
+      'menuList',
       'searchList'
     ]),
     time: function () {
@@ -214,7 +192,7 @@ export default {
 .search-list{
   overflow-y: auto;
   margin-top: 10px;
-  height: 60vh;
+  max-height: 60vh;
   .list-box{
     display: inherit;
     margin-bottom: 10px;

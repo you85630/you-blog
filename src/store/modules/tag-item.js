@@ -1,35 +1,31 @@
+import api from './../../assets/js/api'
+
 export default {
   state: {
-    tagItem: {
-      title: 'vue',
-      list: [
-        {
-          id: 1,
-          time: '2018-11-27',
-          title: '学习vuex',
-          link: 'learn-vue'
-        }, {
-          id: 2,
-          time: '2018-11-28',
-          title: '学习vuex学习vuex学习vuex学习vuex学习vuex学习vuex学习vuex',
-          link: 'learn-vue'
-        }
-      ]
-    }
+    tagItem: [],
+    tagItemNum: []
   },
   getters: {
-    tagItem: state => state.tagItem
+    tagItem: state => state.tagItem,
+    tagItemNum: state => state.tagItemNum
   },
   actions: {
-    // 异步事件
-    getName ({commit}, key) {
-      commit('getName')
+    // 获取包含当前标签博客
+    getTageItem ({commit}, key) {
+      let URL = '/itemList.json'
+      let data = {
+        key: key
+      }
+      api.get(URL, data).then((res) => {
+        commit('getTageItem', res.data)
+      })
     }
   },
   mutations: {
-    // 同步事件，可修改state中的数据
-    getName (state, data) {
-      console.log(data)
+    // 获取包含当前标签博客
+    getTageItem (state, data) {
+      state.tagItem = data.homeItemList
+      state.tagItemNum = data.total
     }
   }
 }

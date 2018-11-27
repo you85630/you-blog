@@ -20,7 +20,7 @@ export default {
       document.title = this.details.title + ' | You'
     }
   },
-  mounted () {
+  created () {
     this.init()
   }
 }

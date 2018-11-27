@@ -45,6 +45,7 @@ export default {
 .archives{
   .content{
     font-size: 16px;
+    cursor: pointer;
   }
   .page-box{
     margin-top: 20px;

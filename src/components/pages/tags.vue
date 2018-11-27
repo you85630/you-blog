@@ -7,7 +7,6 @@
     <Card shadow class="tag-list" v-if="tagList.length">
       <router-link v-for="li in tagList" :key="li.id" :to="'/tags/'+li.link" :style="{fontSize:fontSize(li.num)+'px'}">{{li.name}}</router-link>
     </Card>
-    <div class="data-none" v-else>请加油哟~~</div>
   </div>
 </template>
 
