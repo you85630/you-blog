@@ -4,8 +4,10 @@
       <h2>标签</h2>
       <p>目前共计<span>{{tagNum}}</span>个标签</p>
     </div>
-    <Card shadow class="tag-list" v-if="tagList.length">
-      <router-link v-for="li in tagList" :key="li.id" :to="'/tags/'+li.link" :style="{fontSize:fontSize(li.num)+'px'}">{{li.name}}</router-link>
+    <Card shadow v-if="tagList.length">
+      <div class="tag-list">
+        <div class="tag" v-for="li in tagList" :key="li.id" :style="{fontSize:fontSize(li.num)+'px'}" @click="linkTo(li.link)">{{li.name}}</div>
+      </div>
     </Card>
   </div>
 </template>
@@ -30,6 +32,9 @@ export default {
         size = 30
       }
       return size
+    },
+    linkTo (key) {
+      this.$router.push('/tags/' + key)
     }
   },
   created () {
@@ -58,12 +63,13 @@ export default {
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
-    a{
+    .tag{
       margin:10px 14px;
       margin-top: 0;
       border-bottom: 1px solid #999;
       color: #999;
       font-size: 12px;
+      cursor: pointer;
       &:hover{
         border-color: #000;
         color: #515a6e;

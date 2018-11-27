@@ -48,7 +48,7 @@ export default {
       document.title = '标签:' + id + ' | You'
     },
     linkTo (key) {
-      this.$router.push('/archives/' + key.link)
+      this.$router.push('/archives/' + key)
     }
   },
   created () {
