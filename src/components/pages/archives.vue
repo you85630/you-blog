@@ -3,7 +3,7 @@
     <Card shadow>
       <Timeline>
           <TimelineItem color="#fc0">
-            <Icon type="ios-trophy" size="18" slot="dot"></Icon>
+            <Icon type="ios-trophy" size="24" slot="dot"></Icon>
             <p>请继续努力！</p>
             <p class="content">目前共计 {{archivesTotal}} 篇日志</p>
           </TimelineItem>

@@ -3,7 +3,7 @@
     <Card shadow>
       <Timeline>
           <TimelineItem color="#2d8cf0">
-            <Icon type="md-bookmark" size="18" slot="dot"></Icon>
+            <Icon type="md-bookmark" size="24" slot="dot"></Icon>
             <p>标签:</p>
             <p class="content">{{title}}</p>
         </TimelineItem>
