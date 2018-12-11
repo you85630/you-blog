@@ -83,6 +83,9 @@ export default {
           }
         }
       }
+      if (this.modeType === 'vertical') {
+        this.showMenu = false
+      }
     },
     // 跳转到定位页面
     linkTo (key) {
