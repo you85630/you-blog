@@ -2,7 +2,7 @@
   <div class="not-found">
     <p>页面不存在</p>
     <img src="./../assets/img/404.gif" alt="">
-    <router-link to="/home">back to homepage &gt;</router-link>
+    <router-link to="/home">back to homepage <Icon type="ios-arrow-forward" /></router-link>
   </div>
 </template>
 
