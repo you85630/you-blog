@@ -6,7 +6,7 @@
     </div>
     <Card shadow v-if="tagList.length">
       <div class="tag-list">
-        <div class="tag" v-for="li in tagList" :key="li.id" :style="{fontSize:fontSize(li.num)+'px'}" @click="linkTo(li.link)">{{li.name}}</div>
+        <div class="tag" v-for="li in tagList" :key="li.id" :style="{fontSize:fontSize(li.count)+'px'}" @click="linkTag(li.name)">{{li.name}}</div>
       </div>
     </Card>
   </div>
@@ -23,7 +23,8 @@ export default {
   },
   methods: {
     ...mapActions([
-      'getTagList'
+      'getTagList',
+      'linkTag'
     ]),
     fontSize (key) {
       let size = 12
@@ -32,9 +33,6 @@ export default {
         size = 30
       }
       return size
-    },
-    linkTo (key) {
-      this.$router.push('/tags/' + key)
     }
   },
   created () {

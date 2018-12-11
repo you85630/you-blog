@@ -1,4 +1,5 @@
 import api from './../../assets/js/api'
+import router from './../../router/'
 
 export default {
   state: {
@@ -24,8 +25,22 @@ export default {
   mutations: {
     // 获取包含当前标签博客
     getTageItem (state, data) {
-      state.tagItem = data.homeItemList
-      state.tagItemNum = data.total
+      let tagList = []
+      let list = data.homeItemList
+      let key = router.currentRoute.params.id
+      for (var i = 0; i < list.length; i++) {
+        const element = list[i]
+        const tag = element.tag
+        for (var j = 0; j < tag.length; j++) {
+          let e = tag[j]
+          if (e === key) {
+            tagList.push(element)
+          }
+        }
+      }
+
+      state.tagItem = tagList
+      state.tagItemNum = tagList.length
     }
   }
 }

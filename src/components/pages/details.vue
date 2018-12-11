@@ -2,11 +2,15 @@
     <Card shadow>
       <div class="details-title" slot="title">
         <div class="title">{{details.title}}</div>
-        <div class="time"><Icon type="md-calendar" />发表于：{{details.time}}</div>
+        <div class="time-box"><Icon type="md-calendar" />发表于：{{details.time}}</div>
         <div class="num-box">
-          <p><Icon type="md-stats" />字数统计：{{details.num}}</p>
+          <p><Icon type="md-stats" />字数统计：{{details.num}}字</p>
           <p class="num-mar">|</p>
           <p><Icon type="md-clock" />阅读时长 ≈ {{details.read}}分钟</p>
+        </div>
+        <div class="tag-box">
+          <Icon type="md-bookmark" />标签：
+          <span v-for="(t,index) in details.tag" :key="index" @click="linkTag(t)">{{t}}</span>
         </div>
       </div>
       <div v-html="compiledMarkdown"></div>
@@ -41,7 +45,8 @@ export default {
   },
   methods: {
     ...mapActions([
-      'getDetails'
+      'getDetails',
+      'linkTag'
     ]),
     init () {
       // 获取页面数据
@@ -59,29 +64,46 @@ export default {
 
 <style lang="scss" scoped>
 .details-title{
+  text-align: center;
+  margin: 10px 0;
   i{
     margin-right: 4px;
   }
   .title{
-    margin-bottom: 10px;
     font-size: 22px;
   }
-  .time{
+  .tag-box,
+  .num-box p,
+  .time-box{
     color: #999;
     font-size: 12px;
+  }
+  .time-box{
+    margin-top: 20px;
   }
   .num-box{
     display: flex;
     flex-direction: row;
-    margin-top: 10px;
+    justify-content: center;
+    margin: 4px 0;
     p{
       width: auto;
-      color: #999;
-      font-size: 12px;
       font-weight: normal;
     }
     .num-mar{
       margin: 0 12px;
+    }
+  }
+  .tag-box{
+    span{
+      margin-right: 6px;
+      cursor: pointer;
+      &:hover{
+        color: #2d8cf0;
+      }
+      &:last-child{
+        margin-right: 0;
+      }
     }
   }
 }

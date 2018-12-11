@@ -7,7 +7,7 @@
       "num": 123,
       "read": 5,
       "link": "learn-vue1",
-      "tag": "vue",
+      "tag":["vue","react","webpack"],
       "info": "# hhah \n## 123"
     },{
       "id": 2,
@@ -16,7 +16,7 @@
       "num": 123,
       "read": 5,
       "link": "learn-vue2",
-      "tag": "vue",
+      "tag": ["react"],
       "info": "啦啦啦啦"
     },{
       "id": 3,
@@ -25,7 +25,7 @@
       "num": 123,
       "read": 5,
       "link": "learn-vue3",
-      "tag": "vue",
+      "tag": ["webpack"],
       "info": "啦啦啦啦"
     },{
       "id": 4,
@@ -34,7 +34,7 @@
       "num": 123,
       "read": 5,
       "link": "learn-vue4",
-      "tag": "vue",
+      "tag": ["vue"],
       "info": "啦啦啦啦"
     },{
       "id": 5,
@@ -43,7 +43,7 @@
       "num": 123,
       "read": 5,
       "link": "learn-vue5",
-      "tag": "vue",
+      "tag": ["other"],
       "info": "啦啦啦啦"
     }
   ],

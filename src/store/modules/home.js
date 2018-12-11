@@ -1,4 +1,5 @@
 import api from './../../assets/js/api'
+import router from './../../router/'
 
 export default {
   state: {
@@ -34,6 +35,10 @@ export default {
     homeTotal: state => state.homeTotal
   },
   actions: {
+    // 标签跳转
+    linkTag ({ commit }, key) {
+      commit('linkTag', key)
+    },
     // 获取全部博客信息
     getItemList ({ commit }, key) {
       let URL = '/itemList.json'
@@ -43,6 +48,10 @@ export default {
     }
   },
   mutations: {
+    // 标签跳转
+    linkTag (state, key) {
+      router.push('/tags/' + key)
+    },
     // 获取全部博客信息
     getItemList (state, data) {
       state.homeItemList = data.homeItemList
