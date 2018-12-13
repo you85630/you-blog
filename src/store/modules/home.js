@@ -54,6 +54,16 @@ export default {
     },
     // 获取全部博客信息
     getItemList (state, data) {
+      let pattern = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）&mdash;—|{}【】‘；：”“'。，、？]")
+      for (let i = 0; i < data.homeItemList.length; i++) {
+        const element = data.homeItemList[i]
+        let msg = element.info.slice(0, 100)
+        let text = ''
+        for (let i = 0; i < msg.length; i++) {
+          text = text + msg.substr(i, 1).replace(pattern, '')
+        }
+        element.info = text + '……'
+      }
       state.homeItemList = data.homeItemList
       state.homeTotal = data.total
     }
