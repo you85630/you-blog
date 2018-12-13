@@ -62,8 +62,7 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     .tag{
-      margin:10px 14px;
-      margin-top: 0;
+      margin:5px 14px;
       color: #999;
       font-size: 12px;
       cursor: pointer;

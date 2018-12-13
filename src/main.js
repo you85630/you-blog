@@ -14,6 +14,16 @@ import 'babel-polyfill'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
 
+// markdown代码高亮
+import hljs from 'highlight.js'
+import 'highlight.js/styles/zenburn.css'
+Vue.directive('highlight', function (el) {
+  let blocks = el.querySelectorAll('pre code')
+  blocks.forEach((block) => {
+    hljs.highlightBlock(block)
+  })
+})
+
 // 全局使用
 Vue.use(iView)
 

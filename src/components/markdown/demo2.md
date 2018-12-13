@@ -27,7 +27,7 @@ learn-vue2
 
 ## Build Setup
 
-``` bash
+```
 # install dependencies
 npm install
 
@@ -73,7 +73,7 @@ measurement_admin
 │ ├── components                  // vue公共组件
 │ │ ├── common                    // 独立化组件
 │ │ ├── modules                   // 组件碎片库
-│ │ └── pages               // 子页面
+│ │ └── pages                     // 子页面
 │ ├──router                       // 前端路由
 │ │ └── index.js                  // 路由配置文件
 │ ├──views                        // 主页面

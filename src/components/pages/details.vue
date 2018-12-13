@@ -13,25 +13,15 @@
           <span v-for="(t,index) in details.tag" :key="index" @click="linkTag(t)">{{t}}</span>
         </div>
       </div>
-      <div v-html="compiledMarkdown"></div>
+      <div class="compiled-markdown" v-html="compiledMarkdown" v-highlight></div>
     </Card>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-
+// markdown
 import marked from 'marked'
 
-marked.setOptions({
-  renderer: new marked.Renderer(),
-  gfm: true,
-  tables: true,
-  breaks: false,
-  pedantic: false,
-  sanitize: false,
-  smartLists: true,
-  smartypants: false
-})
 export default {
   computed: {
     ...mapGetters([
@@ -54,6 +44,17 @@ export default {
       this.getDetails(id)
       // 页面标题
       document.title = id + ' | You'
+      // marked
+      marked.setOptions({
+        renderer: new marked.Renderer(),
+        gfm: true,
+        tables: true,
+        breaks: false,
+        pedantic: false,
+        sanitize: false,
+        smartLists: true,
+        smartypants: false
+      })
     }
   },
   created () {
@@ -64,8 +65,8 @@ export default {
 
 <style lang="scss" scoped>
 .details-title{
-  text-align: center;
   margin: 10px 0;
+  text-align: center;
   i{
     margin-right: 4px;
   }
