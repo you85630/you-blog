@@ -27,6 +27,16 @@ export default {
     // 搜索
     getSearchList (state, data) {
       if (data) {
+        let pattern = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）&mdash;—|{}【】‘；：”“'。，、？]")
+        for (let i = 0; i < data.homeItemList.length; i++) {
+          const element = data.homeItemList[i]
+          let msg = element.info.slice(0, 100)
+          let text = ''
+          for (let i = 0; i < msg.length; i++) {
+            text = text + msg.substr(i, 1).replace(pattern, '')
+          }
+          element.info = text + '……'
+        }
         state.searchList = data.homeItemList
       } else {
         state.searchList = []

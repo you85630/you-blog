@@ -24,7 +24,7 @@
       </Content>
       <Footer class="footer">2018<span v-if="time!==2018">&nbsp;-&nbsp;{{time===2018?'':time}}</span>&nbsp;&copy;&nbsp;You</Footer>
     </Layout>
-    <Modal footer-hide :mask-closable="false" v-model="visible" title="搜索" width="55%">
+    <Modal footer-hide :mask-closable="false" v-model="visible" title="搜索" width="55%" @on-visible-change="closeBox">
       <Input clearable prefix="ios-search" placeholder="搜索……" style="width: 100%" v-model="searchKey" @on-enter="getSearchList(searchKey)" />
       <div class="search-list">
         <div class="list-box" v-for="li in searchList" :key="li.id" @click="linkTo(li.link)">
@@ -100,6 +100,10 @@ export default {
       if (this.modeType === 'vertical') {
         this.showMenu = false
       }
+    },
+    closeBox () {
+      this.searchKey = ''
+      this.getSearchList()
     }
   },
   mounted () {
