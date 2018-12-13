@@ -13,7 +13,7 @@
                   <Icon size="18" :type="li.icon" />{{li.title}}
                 </MenuItem>
               </Menu>
-              <div class="search" @click="visible=true"><Icon size="18" type="md-search" />搜索</div>
+              <div class="search" @click="searchBox"><Icon size="18" type="md-search" />搜索</div>
             </div>
           </div>
       </Header>
@@ -94,6 +94,12 @@ export default {
       this.visible = false
       this.searchKey = ''
       this.getSearchList()
+    },
+    searchBox () {
+      this.visible = true
+      if (this.modeType === 'vertical') {
+        this.showMenu = false
+      }
     }
   },
   mounted () {

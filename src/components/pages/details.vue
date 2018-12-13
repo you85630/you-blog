@@ -4,7 +4,7 @@
         <div class="title">{{details.title}}</div>
         <div class="time-box"><Icon type="md-calendar" />发表于：{{details.time}}</div>
         <div class="num-box">
-          <p><Icon type="md-stats" />字数统计：{{details.num}}字</p>
+          <p><Icon type="md-stats" />字数统计：{{details.words}}字</p>
           <p class="num-mar">|</p>
           <p><Icon type="md-clock" />阅读时长 ≈ {{details.read}}分钟</p>
         </div>
@@ -21,6 +21,7 @@
 import { mapActions, mapGetters } from 'vuex'
 
 import marked from 'marked'
+
 marked.setOptions({
   renderer: new marked.Renderer(),
   gfm: true,
@@ -31,15 +32,14 @@ marked.setOptions({
   smartLists: true,
   smartypants: false
 })
-
 export default {
   computed: {
     ...mapGetters([
       'details'
     ]),
     compiledMarkdown: function () {
-      if (this.details) {
-        return marked(this.details.info, { sanitize: true })
+      if (this.details.info) {
+        return marked(this.details.info || '', {sanitize: true})
       }
     }
   },

@@ -4,7 +4,7 @@
       <div class="title"><router-link :to="'/archives/'+li.link">{{li.title}}</router-link></div>
       <div class="time"><Icon type="md-calendar" />发表于：{{li.time}}</div>
       <div class="num">
-        <p><Icon type="md-stats" />字数统计：{{li.num}}字</p>
+        <p><Icon type="md-stats" />字数统计：{{li.words}}字</p>
         <p class="num-mar">|</p>
         <p><Icon type="md-clock" />阅读时长 ≈ {{li.read}}分钟</p>
       </div>

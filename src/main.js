@@ -13,12 +13,9 @@ import 'babel-polyfill'
 // 引入组件库
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
-// 引入全局事件
-import utils from './assets/js/utils.js'
 
 // 全局使用
 Vue.use(iView)
-Vue.prototype.utils = utils
 
 Vue.config.productionTip = false
 
