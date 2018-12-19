@@ -8,12 +8,11 @@
               <div class="open" @click="showMenu=!showMenu" v-if="modeType==='vertical'"><Icon size="32" type="md-menu" /></div>
             </div>
             <div class="nav-box" v-if="showMenu">
-              <Menu :mode="modeType" theme="dark" :active-name="activeName" @on-select="activeItem">
+              <Menu :mode="modeType" theme="dark" :class="{'menu-lang':modeType==='vertical'}" :active-name="activeName" @on-select="activeItem">
                 <MenuItem class="center" :name="li.id" v-for="li in menuList" :key="li.id">
                   <Icon size="18" :type="li.icon" />{{li.title}}
                 </MenuItem>
               </Menu>
-              <div class="search" @click="searchBox"><Icon size="18" type="md-search" />搜索</div>
             </div>
           </div>
       </Header>
@@ -24,20 +23,11 @@
       </Content>
       <Footer class="footer">2018<span v-if="time!==2018">&nbsp;-&nbsp;{{time===2018?'':time}}</span>&nbsp;&copy;&nbsp;You</Footer>
     </Layout>
-    <Modal footer-hide :mask-closable="false" v-model="visible" title="搜索" width="55%" @on-visible-change="closeBox">
-      <Input clearable prefix="ios-search" placeholder="搜索……" style="width: 100%" v-model="searchKey" @on-enter="getSearchList(searchKey)" />
-      <div class="search-list">
-        <div class="list-box" v-for="li in searchList" :key="li.id" @click="linkTo(li.link)">
-          <div class="title">{{li.title}}</div>
-          <div class="info">{{li.info}}</div>
-        </div>
-      </div>
-    </Modal>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   data () {
     return {
@@ -59,9 +49,6 @@ export default {
     }
   },
   methods: {
-    ...mapActions([
-      'getSearchList'
-    ]),
     // 页面布局响应
     init () {
       if (document.body.clientWidth <= 644) {
@@ -74,6 +61,7 @@ export default {
     },
     // 导航跳转
     activeItem (name) {
+      this.activeName = name
       let list = this.menuList
       for (const key in list) {
         if (list.hasOwnProperty(key)) {
@@ -92,18 +80,6 @@ export default {
       this.$router.push('/archives/' + key)
       // 重置搜搜条件
       this.visible = false
-      this.searchKey = ''
-      this.getSearchList()
-    },
-    searchBox () {
-      this.visible = true
-      if (this.modeType === 'vertical') {
-        this.showMenu = false
-      }
-    },
-    closeBox () {
-      this.searchKey = ''
-      this.getSearchList()
     }
   },
   mounted () {
@@ -160,15 +136,8 @@ export default {
       align-items: center;
       flex-direction: row;
     }
-  }
-  .search{
-    margin-left: 20px;
-    color: #fff;
-    white-space: nowrap;
-    font-size: 14px;
-    cursor: pointer;
-    i{
-      margin-right: 6px;
+    .menu-lang{
+      width: 100% !important;
     }
   }
   .open{
@@ -200,29 +169,6 @@ export default {
   .slide-fade-leave-active {
     opacity: 0;
     transform: translateX(10px);
-  }
-}
-.search-list{
-  overflow-y: auto;
-  margin-top: 10px;
-  max-height: 60vh;
-  .list-box{
-    display: inherit;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px dashed #515a6e;
-    cursor: pointer;
-    .title{
-      color: #515a6e;
-      font-size: 16px;
-    }
-    .info{
-      color: #515a6e;
-      font-size: 14px;
-    }
-    .active-text{
-      color: #f00;
-    }
   }
 }
 .ivu-menu-item-active,
